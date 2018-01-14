@@ -407,11 +407,12 @@ class cyclic_HMM(object):
     def get_duration_pdf(self, duration = None, state = None): 
         """
         checked. Computes probability of remaining in state for given duration. 
-        Scale here should be standard deviation. 
         """
         if self.duration_distribution_name == 'poisson':
             return poisson.pmf(duration, self.state_duration_means[state])
         if self.duration_distribution_name == 'geometric':
+            # Note there are two "geometric distributions" https://en.wikipedia.org/wiki/Geometric_distribution
+            # this is scipy's default and we found it to perform better on real-world data, but it's easy to swap out for the other if you prefer. 
             return geom.pmf(duration, 1. / self.state_duration_means[state])
 
     def initialize_states(self): 
