@@ -6,8 +6,7 @@ import copy
 import random
 from IPython import embed
 
-# because the HMM library we rely on, Pomegranate, does not deal well with nans or strings
-# we encode missing data as an integer that will not appear in real data. This constant is used throughout the code. 
+# we encode missing data as an integer that will not appear in real data. This is done for compatibility with the version of Pomegranate (a library with support for HMMs) that we used in development. This constant is used throughout the code. 
 missing_data_val = -9999999 
 
 def get_symptom_variability(vector):

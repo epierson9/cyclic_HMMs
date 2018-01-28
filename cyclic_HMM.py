@@ -30,8 +30,7 @@ valid_distributions = ['poisson', 'geometric']
 valid_emission_distributions = ['bernoulli_with_missing_data', 'normal_with_missing_data']
 
 # zero_val and one_val are constants which are used to define the bernoulli_with_missing_data emission distribution, see below. 
-# their actual values don't really matter; they're just a workaround because Pomegranate, the HMM package used
-# has some trouble with discrete distributions. 
+# their actual values don't really matter; they're just a workaround used for compatibility with the version of Pomegranate used for development.  
 zero_val = 0 
 one_val = 100
 
@@ -138,7 +137,7 @@ class emissionDistribution(object):
 
     def make_fake_discrete_distribution(self, centers, ps):
         """
-        Pomegranate handles discrete distributions a little oddly: this is a workaround. 
+        Workaround for encoding discrete distributions that works with the version of Pomegranate we used in development. 
         Small helper method for the method below. 
         The density of a draw from the center_i of this distribution will be ps_i. 
         """
